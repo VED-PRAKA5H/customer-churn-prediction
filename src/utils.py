@@ -38,4 +38,36 @@ def transform_column(column):
     return np.pow(column, 0.55)
 
 
+def encode_fit_transform(df, columns):
+    # Initialize a dictionary to save the encoders
+    encoders = {}
+    # Apply the encoding to the training data.
+    for column in columns:
+        if column != "SubscriptionType":
+            encoder = LabelEncoder()
+            df[column] = encoder.fit_transform(df[column])
+        else:
+            encoder = OrdinalEncoder(categories='auto')
+            df[column] = encoder.fit_transform(df[[column]]) #fit transform expects a 2d array.
+    
+    
+        encoders[column] = encoder  # Save the individual encoder
+        return df , encoders
+
+
+def encode_transform(df, columns, emcoders):
+        # Apply the encoding to the training data.
+    for column in columns:
+        encoder = encoders[column]
+        if column != "SubscriptionType":
+            df[column] = encoder.transform(df[column])
+        else:
+            df[column] = encoder.transform(df[[column]]) #fit transform expects a 2d array.
+    
+    return df 
+
+
+    
+
+
     
