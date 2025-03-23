@@ -55,8 +55,8 @@ def encode_fit_transform(df, columns):
         return df , encoders
 
 
-def encode_transform(df, columns, emcoders):
-        # Apply the encoding to the training data.
+def encode_transform(df, columns, encoders):
+     # Apply the encoding to the training data.
     for column in columns:
         encoder = encoders[column]
         if column != "SubscriptionType":
