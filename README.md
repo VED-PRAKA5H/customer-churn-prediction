@@ -19,3 +19,5 @@
 ```shell
 conda install -c conda-forge imbalanced-learn
 ```
+## Dashboard of Project
+![img.png](notebook/data/img.png)
